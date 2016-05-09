@@ -1,23 +1,64 @@
-
 BoxLayout:
-    orientation: 'vertical'
-    Button:
-        text: "List Items"
-        size_hint_x: 0.2
-    Button:
-        size_hint_x: 0.2
-        text: "Hire Item"
-    Button:
-        size_hint_x: 0.2
-        text: "Return Items"
-    Button:
-        size_hint_x: 0.2
-        text: "Confirm"
-    Button:
-        size_hint_x: 0.2
-        text: "Add New Item"
+    orientation:'vertical'
     BoxLayout:
-        orientation: 'vertical'
-        Button:
-            size_hint_x: 0.8
-            text:"test"
+        orientation: 'horizontal'
+        BoxLayout:
+            id:mainBox
+            orientation: 'vertical'
+            size_hint_x: 0.2
+            Button:
+                text: "List Items"
+            Button:
+                text: "Hire Item"
+            Button:
+                text: "Return Items"
+            Button:
+                text: "Confirm"
+            Popup:
+                id:popup
+                text: "Add New Item"
+                on_parent: if self.parent == mainBox: self.parent.remove_widget(self)
+        GridLayout:
+            rows: 2
+            cols: 2
+            pos_hint_x: 'left'
+            Button:
+                text:"test"
+            Button:
+                text:"test"
+            Button:
+                text:"test"
+            Button:
+                text:"test"
+
+    Label:
+        size_hint_x: 1
+        size_hint_y: 0.1
+        text:'Choose an action from the left menu, then select items from the right.'
+
+
+
+#        BoxLayout:
+#    orientation: 'horizontal'
+#    Label:
+#        text: 'Item Name:'
+#    TextInput:
+#
+#    Label:
+#        text: 'Description:'
+#
+#    TextInput:
+#
+#    Label:
+#        text: 'Price Per Day:'
+#
+#    Button:
+#        text: 'Save Item'
+#
+#    Button:
+#        text: 'Cancel'
+#
+#    Label:
+#        text: 'Error Details'
+
+
