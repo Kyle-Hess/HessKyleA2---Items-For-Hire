@@ -23,7 +23,7 @@ class PhonebookApp(App):
         :return: reference to the root Kivy widget
         """
         self.title = "Phonebook Demo - Popup & Buttons"
-        self.root = Builder.load_file('popup_demo.kv')
+        self.root = Builder.load_file('addItemMenu.kv')
         self.create_entry_buttons()
         return self.root
 

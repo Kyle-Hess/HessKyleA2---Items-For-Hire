@@ -4,7 +4,7 @@ BoxLayout:
     Popup:
         id: popup
         # uncomment the line below for a popup that's not full screen/window
-        # size_hint: (.7, .7)
+        #size_hint: (.7, .7)
         title: "Add Phonebook Entry"
         on_parent:
             # Make popup disappear immediately
@@ -14,7 +14,7 @@ BoxLayout:
             id: inputs
             orientation: 'vertical'
             Label:
-                text: 'Name: '
+                text: 'Item Name '
                 size_hint_y: None
                 height: '48dp'
             TextInput:
@@ -27,7 +27,7 @@ BoxLayout:
                 multiline: False
                 write_tab: False
             Label:
-                text: 'Phone Number: '
+                text: 'Description '
                 size_hint_y: None
                 height: '48dp'
             TextInput:
@@ -37,6 +37,18 @@ BoxLayout:
                 height: '48dp'
                 multiline: False
                 write_tab: False
+            Label:
+                text: 'Price Per day '
+                size_hint_y: None
+                height: '48dp'
+            TextInput:
+                id: addedNumber
+                value: ''
+                size_hint_y: None
+                height: '48dp'
+                multiline: False
+                write_tab: False
+
             Button:
                 text: 'Save Entry'
                 on_release: app.press_save(addedName.text, addedNumber.text)
@@ -48,20 +60,40 @@ BoxLayout:
                 # but uses the same string data
                 text: app.status_text
     BoxLayout:
-        orientation: 'vertical'
+        orientation:'vertical'
         BoxLayout:
-            orientation: 'horizontal'
-            Button:
-                id: addButton
-                size_hint_x: 0.3
-                text: 'Add New Entry'
-                on_release: app.press_add()
-            GridLayout:
-                # this layout is populated with (button) widgets in app code
-                id: entriesBox
-                cols: 1
+            orientation:'horizontal'
+            BoxLayout:
                 orientation: 'vertical'
+                size_hint_x: 0.3
+                Button:
+                    #id: addButton
+
+                    text: "List Items"
+                Button:
+                    #id: addButton
+
+                    text: "Hire Item"
+                Button:
+                    #id: addButton
+
+                    text: "Return Items"
+                Button:
+                    #id: addButton
+
+                    text: "Confirm"
+                Button:
+                    #id: addButton
+
+                    text: 'Add New Item'
+                    on_release: app.press_add()
+            GridLayout:
+                id: entriesBox
+                cols: 2
+                pos_hint_x: 'left'
+
         Label:
-            id: statusLabel
             size_hint_y: 0.1
+            size_hint_x: 1
+            id: statusLabel
             text: app.status_text

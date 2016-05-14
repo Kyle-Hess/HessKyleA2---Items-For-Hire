@@ -44,19 +44,6 @@ def main():
 
 
 ######
-'''
-Pseudocode:
-itemList = []
-open file
-search each line in the file
-    item name
-    description
-    price
-    hire
-    itemList.append(itemname, description, price, hire)
-close file
-'''
-
 
 # Loads the contents of the csv file
 def load_items():
@@ -86,21 +73,6 @@ def listing_items():
 
 
 ######
-'''
-Pseudocode:
-hire = input"Enter the item you want to hire:"
-items = open("items.csv", "r")
-     reader = csv.reader(items)
-     for i, line in enumerate(reader):
-         print('{} = {}'.format(i, line))
-     for hire in mylist
-    if i == hire
-        itemname[3] == 'out'
-    print mylist
-
-items.close()
-'''
-
 
 # Works with the enumerate version, and no counter in load_items.
 # Hires an item that is in, and then changes it to 'out'.
