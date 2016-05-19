@@ -48,7 +48,7 @@ class PhonebookApp(App):
         name = instance.text
         self.status_text = "{}'s number is {}".format(name, self.phonebook[name])
 
-    def press_add(self):
+    def press_addItem(self):
         """
         Handler for pressing the add button
         :return: None

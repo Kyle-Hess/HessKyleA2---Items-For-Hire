@@ -18,7 +18,7 @@ BoxLayout:
                 size_hint_y: None
                 height: '48dp'
             TextInput:
-                id: addedName
+                id: itemName
                 value: ''
                 size_hint_y: None
                 height: '48dp'
@@ -31,7 +31,7 @@ BoxLayout:
                 size_hint_y: None
                 height: '48dp'
             TextInput:
-                id: addedNumber
+                id: itemDescription
                 value: ''
                 size_hint_y: None
                 height: '48dp'
@@ -42,7 +42,7 @@ BoxLayout:
                 size_hint_y: None
                 height: '48dp'
             TextInput:
-                id: addedNumber
+                id: itemPrice
                 value: ''
                 size_hint_y: None
                 height: '48dp'
@@ -51,7 +51,7 @@ BoxLayout:
 
             Button:
                 text: 'Save Entry'
-                on_release: app.press_save(addedName.text, addedNumber.text)
+                on_release: app.press_save(itemName.text, itemDescription.text, itemPrice.text)
             Button:
                 text: 'Cancel'
                 on_release: app.press_cancel()
@@ -67,24 +67,23 @@ BoxLayout:
                 orientation: 'vertical'
                 size_hint_x: 0.3
                 Button:
-                    #id: addButton
-
+                    id: addButton
                     text: "List Items"
+                    on_release: app.create_entry_buttons()
                 Button:
-                    #id: addButton
-
+                    id: hire
                     text: "Hire Item"
+                    on_release: app.hiring_item()
                 Button:
-                    #id: addButton
-
+                    id: returnButton
                     text: "Return Items"
+                    on_release: app.return_item()
                 Button:
                     #id: addButton
-
                     text: "Confirm"
+
                 Button:
                     #id: addButton
-
                     text: 'Add New Item'
                     on_release: app.press_add()
             GridLayout:
