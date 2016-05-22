@@ -71,7 +71,11 @@ BoxLayout:
                     text: "List Items"
                     on_release: app.create_entry_buttons()
                 Button:
-                    id: hire
+                    id: clearButton
+                    text: 'Clear'
+                    on_release: app.press_clear()
+                Button:
+                    id: hireButton
                     text: "Hire Item"
                     on_release: app.hiring_item()
 
