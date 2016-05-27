@@ -34,7 +34,7 @@ class ItemsForHireApp(App):
         """
         self.title = "Phonebook Demo - Popup & Buttons"
         self.root = Builder.load_file('addItemMenu.kv')
-        #self.create_entry_buttons()
+        self.create_entry_buttons()
         return self.root
 
     ####
@@ -43,6 +43,7 @@ class ItemsForHireApp(App):
         Create the entry buttons and add them to the GUI
         :return: None
         """
+
         for is_star in self.itemsList:
             if is_star[3] == 'out':
                 temp_button = Button(text='{0} ({1}) = ${2}*'.format(*is_star))
@@ -69,9 +70,9 @@ class ItemsForHireApp(App):
         """
         name = instance.text
         self.status_text = "{}".format(name, self.itemsList[0])
-
+        instance.state = 'down'
     ####
-    def hiring_item(self, hire, item_name):
+    def hiring_item(self):
 
 
         '''
@@ -79,9 +80,12 @@ class ItemsForHireApp(App):
             if hired_items[3] == 'in':
                 temp_button = Button(text='{} ({}) = ${}'.format(*hired_items))
                 temp_button.bind(on_release=self.press_entry)
+                self.root.ids.entriesBox.add_widget(temp_button)
         '''
         #hire = str(input("Enter the Item you want to hire: "))
-        #hire = self.root.ids
+        temp_button = str(self.root.ids.addButton.on_release)
+        hire = temp_button
+
         for i, item_name in enumerate(self.itemsList):
             if item_name[0] == hire:
                 temp = list(self.itemsList[i])
@@ -93,7 +97,7 @@ class ItemsForHireApp(App):
             print('{} | {} '.format(hire, "Has been hired"))
             temp_button = Button(text='{} | {} '.format(hire, "Has been hired"))
             temp_button.bind(on_release=self.press_entry)
-            self.root.ids.entriesBox.add_widget(temp_button)
+
 
     ####
     def return_item(self):
@@ -152,6 +156,15 @@ class ItemsForHireApp(App):
         self.root.ids.itemDescription.text = ""
         self.root.ids.itemPrice.text = ""
 
+    def press_clear(self):
+        """
+        Clear any buttons that have been selected (visually) and reset status text
+        :return: None
+        """
+        # use the .children attribute to access all widgets that are "in" another widget
+        for instance in self.root.ids.entriesBox.children:
+            instance.state = 'normal'
+        self.status_text = ""
     ####
     def press_cancel(self):
         """
@@ -162,5 +175,9 @@ class ItemsForHireApp(App):
         self.clear_fields()
         self.status_text = ""
 
+    def clear_canvas(self):
+        self.canvas.clear()
+        with self.canvas:
+            self.create_entry_buttons()
 
 ItemsForHireApp().run()
